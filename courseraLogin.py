@@ -52,10 +52,10 @@ def makeCSRFToken():
 
 def makeLoginRequest(username, password, csrftoken):
 	params = urllib.urlencode({'email_address':username, 'password':password})
-	req = urllib2.Request("https://www.coursera.org/maestro/api/user/login", params)
-	req.add_header('Referer','https://www.coursera.org/account/signin')
-	req.add_header('Host',"www.coursera.org")
-	req.add_header('X-CSRFToken', csrftoken)
+	req = urllib2.Request("https://novoed.com/users/sign_in", params)
+	req.add_header('Referer','https://novoed.com/')
+	req.add_header('Host',"novoed.com")
+	req.add_header('authenticity_token', csrftoken)
 	req.add_header('X-Requested-With', 'XMLHttpRequest')
 	
 	return req
